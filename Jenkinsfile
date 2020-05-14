@@ -3,15 +3,18 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'echo "==========================="'
-                sh 'mvn --version'
-                sh 'echo "==========================="'
+                retry(3) {
+	                sh 'mvn --version'
+                }
+                
                 sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
-                sh 'echo "==========================="'
+                
+                timeout(time: 3, unit: 'MINUTES') {
+	                sh '''
+	                    echo "Multiline shell steps works too"
+	                    ls -lah
+	                '''
+                }
             }
         }
     }
