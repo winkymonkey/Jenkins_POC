@@ -4,7 +4,6 @@ pipeline {
             image 'maven:3.3.3'
         }
     }
-    
     stages {
         stage('build') {
             steps {
@@ -23,7 +22,6 @@ pipeline {
             }
         }
     }
-    
     post {
         always {
             echo 'This will always run'
