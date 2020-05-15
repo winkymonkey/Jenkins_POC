@@ -14,15 +14,16 @@ pipeline {
 	                sh 'mvn --version'
                 }
                 
-                sh 'echo "Hello World"'
+                timeout(time: 3, unit: 'MINUTES') {
+	                sh 'mvn clean install'
+                }
+                
                 sh 'echo "Database engine is ${DB_ENGINE}"'
                 
-                timeout(time: 3, unit: 'MINUTES') {
-	                sh '''
-	                    echo "Multiline shell steps works too"
-	                    ls -lah
-	                '''
-                }
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
             }
         }
         stage('test') {
