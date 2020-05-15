@@ -10,8 +10,15 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh 'mvn --version'
+                
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+                
                 retry(3) {
-	                sh 'mvn --version'
+	                sh 'mvn dependency:tree'
                 }
                 
                 timeout(time: 3, unit: 'MINUTES') {
@@ -20,10 +27,6 @@ pipeline {
                 
                 sh 'echo "Database engine is ${DB_ENGINE}"'
                 
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
             }
         }
         stage('test') {
