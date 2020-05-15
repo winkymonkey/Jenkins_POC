@@ -4,6 +4,9 @@ pipeline {
             image 'maven:3.3.3'
         }
     }
+    environment {
+        DB_ENGINE = 'sqlite'
+    }
     stages {
         stage('build') {
             steps {
@@ -12,6 +15,7 @@ pipeline {
                 }
                 
                 sh 'echo "Hello World"'
+                sh 'echo "Database engine is ${DB_ENGINE}"'
                 
                 timeout(time: 3, unit: 'MINUTES') {
 	                sh '''
