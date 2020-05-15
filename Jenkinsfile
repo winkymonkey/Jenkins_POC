@@ -38,9 +38,6 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            mail to: 'pal.abhishek.2008@gail.com',
-               subject: "Current Pipeline: ${currentBuild.fullDisplayName}",
-               body: "Current build URL ${env.BUILD_URL}"
         }
         success {
             echo 'This will run only if successful'
