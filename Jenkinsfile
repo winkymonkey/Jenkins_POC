@@ -35,7 +35,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
-        stage('Sanity check') {
+        stage('Requires Approval') {
             steps {
                 input "Does the staging environment look ok?"
             }
