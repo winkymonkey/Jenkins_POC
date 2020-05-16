@@ -30,6 +30,20 @@ pipeline {
                 
             }
         }
+        stage('Build-2') {
+            parallel {
+                stage('leg-1') {
+                    steps {
+                        sh 'mvn clean package'
+                    }
+                }
+                stage('leg-2') {
+                    steps {
+                        sh 'mvn clean package'
+                    }
+                }
+            }
+        }
         stage('Test') {
             steps {
                 junit 'target/surefire-reports/*.xml'
