@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         DB_ENGINE = 'sqlite'
+        MY_SECRET_KEY = credentials('mySecretKey')
     }
     stages {
         stage('Build') {
@@ -42,6 +43,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'echo "Deploying to production"'
+                sh 'java -DmySecretKey=$MY_SECRET_KEY -jar target/JenkinsTestRepo-0.0.1-SNAPSHOT.jar'
             }
         }
     }

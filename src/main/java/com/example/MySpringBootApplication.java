@@ -9,6 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MySpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MySpringBootApplication.class, args);
-		System.out.println(System.getProperty("myKey"));
+		System.out.println("mySecretKey is "+System.getProperty("mySecretKey"));
 	}
 }
