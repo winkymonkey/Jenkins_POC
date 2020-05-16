@@ -9,6 +9,11 @@ pipeline {
         MY_SECRET_KEY = credentials('mySecretKey')
     }
     stages {
+        stage('Info') {
+            steps {
+                sh 'echo "Branch Name=${env.BRANCH_NAME}"'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn --version'
