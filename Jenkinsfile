@@ -8,7 +8,7 @@ pipeline {
         DB_ENGINE = 'sqlite'
     }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'mvn --version'
                 
@@ -29,7 +29,7 @@ pipeline {
                 
             }
         }
-        stage('test') {
+        stage('Test') {
             steps {
                 junit 'target/surefire-reports/*.xml'
             }
@@ -39,7 +39,7 @@ pipeline {
                 input "Does the staging environment look ok?"
             }
         }
-        stage('Deploy - Production') {
+        stage('Deploy') {
             steps {
                 sh 'echo "Deploying to production"'
             }
