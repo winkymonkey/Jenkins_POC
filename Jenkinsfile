@@ -10,6 +10,7 @@ pipeline {
     }
     stages {
         stage('Info') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 echo "Printing built-in environment variables"
                 echo "BRANCH_NAME is ${env.BRANCH_NAME}"
@@ -66,6 +67,7 @@ pipeline {
             }
         }
         stage('Build') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 sh 'mvn --version'
                 
@@ -87,6 +89,7 @@ pipeline {
             }
         }
         stage('Build-2') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             parallel {
                 stage('leg-1') {
                     steps {
@@ -103,16 +106,19 @@ pipeline {
             }
         }
         stage('Test') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 junit 'target/surefire-reports/*.xml'
             }
         }
         stage('Requires Approval') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 input "Does the staging environment look ok?"
             }
         }
         stage('Deploy') {
+            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 sh 'echo "Deploying to production"'
                 sh 'java -DmySecretKey=$MY_SECRET_KEY -jar target/JenkinsTestRepo-0.0.1-SNAPSHOT.jar'
