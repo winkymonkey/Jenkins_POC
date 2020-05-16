@@ -34,6 +34,16 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
+        stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+        }
+        stage('Deploy - Production') {
+            steps {
+                sh 'echo "Deploying to production"'
+            }
+        }
     }
     post {
         always {
