@@ -34,12 +34,14 @@ pipeline {
             parallel {
                 stage('leg-1') {
                     steps {
-                        sh 'mvn clean package'
+                        sh 'sleep 10'
+                        sh 'mvn dependency:tree'
                     }
                 }
                 stage('leg-2') {
                     steps {
-                        sh 'mvn clean package'
+                        sh 'sleep 10'
+                        sh 'mvn dependency:tree'
                     }
                 }
             }
