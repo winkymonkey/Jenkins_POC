@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Info') {
             steps {
-                sh 'echo "Branch Name ${env.BRANCH_NAME}"'
+                echo "Branch Name ${env.BRANCH_NAME}"
             }
         }
         stage('Build') {
