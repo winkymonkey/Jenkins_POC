@@ -121,7 +121,7 @@ pipeline {
             when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 sh 'echo "Deploying to production"'
-                sh 'java -DmySecretKey=$MY_SECRET_KEY -jar target/JenkinsTestRepo-0.0.1-SNAPSHOT.jar'
+                sh 'java -DmySecretKey=$MY_SECRET_KEY -jar target/Jenkins_POC-0.0.1-SNAPSHOT.jar'
             }
         }
     }

@@ -4,10 +4,10 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>JenkinsTestRepo</artifactId>
+	<artifactId>Jenkins_POC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Test</name>
+	<name>Jenkins_POC</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
