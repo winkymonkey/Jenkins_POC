@@ -1,4 +1,4 @@
-package com.example;
+package org.example.cicd;
 
 import static org.junit.Assert.assertTrue;
 
